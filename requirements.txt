@@ -1,0 +1,7 @@
+distlib==0.3.6
+numpy==1.24.2
+opencv-contrib-python==4.7.0.72
+PyAudio==0.2.13
+pycparser==2.21
+pygame==2.3.0
+virtualenv==20.16.5

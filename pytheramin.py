@@ -32,7 +32,7 @@ def position_to_pitch_and_vibrato(pos, frame_width, frame_height):
     if pos is not None:
         cX, cY = pos
         pitch = int(np.interp(cY, [0, frame_height], [2000, 200]))  # Map Y position to pitch (200Hz - 2000Hz)
-        vibrato = int(np.interp(cX, [0, frame_width], [0, 1000]))  # Map X position to vibrato (0 - 100)
+        vibrato = int(np.interp(cX, [0, frame_width], [0, 500]))  # Map X position to vibrato (0 - 100)
         return pitch, vibrato
     else:
         return None, None
@@ -58,10 +58,6 @@ def setup_tracker(cap):
         attempts += 1
 
     return tracker, frame
-
-
-
-
 
 current_pitch_vibrato = (0, 0)
 vibrato_intensity = 2
@@ -110,7 +106,6 @@ def main():
         ret, frame = cap.read()
         frame = cv2.flip(frame, 1)  # Flip the camera horizontally
         height, width, _ = frame.shape
-        ret, frame = cap.read()
 
         success, bbox = tracker.update(frame)
         if success:
